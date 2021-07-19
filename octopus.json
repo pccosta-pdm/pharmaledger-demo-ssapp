@@ -1,0 +1,137 @@
+{
+  "workDir": ".",
+  "dependencies": [
+    {
+      "name": "Workbox-cli Install (globally)",
+      "src": "",
+      "description": "the dev dependencies break cardinal build",
+      "actions": [
+        {
+          "type": "execute",
+          "cmd": "npm install -g workbox-cli@6.1.5"
+        }
+      ]
+    }
+  ],
+  "prebuild": [
+    {
+      "name": "PSK bundles",
+      "src": "",
+      "actions": [
+        {
+          "type": "copy",
+          "src": "../privatesky/psknode/bundles/pskruntime.js",
+          "target": "code/constitution/pskruntime.js",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "../privatesky/psknode/bundles/webshims.js",
+          "target": "code/constitution/webshims.js",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "../privatesky/psknode/bundles/pskruntime.js",
+          "target": "code/scripts/bundles/pskruntime.js",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "../privatesky/psknode/bundles/webshims.js",
+          "target": "code/scripts/bundles/webshims.js",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "../privatesky/psknode/bundles/iframeBoot.js",
+          "target": "code/scripts/bundles/iframeBoot.js",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "remove",
+          "target": "./builds"
+        }
+      ]
+    },
+    {
+      "name": "Copy fgt-dsu-wizard-bundle",
+      "src": "",
+      "actions": [
+        {
+          "type": "copy",
+          "src": "../fgt-dsu-wizard/build/bundles/wizard.js",
+          "target": "code/scripts/bundles/wizard.js",
+          "options": {
+            "overwrite": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "Copy Ionic Dependencies",
+      "src": "",
+      "actions": [
+        {
+          "type": "copy",
+          "src": "./node_modules/@ionic/core/dist/ionic",
+          "target": "./code/assets/ionic-core",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "./node_modules/@ionic/core/css",
+          "target": "./code/assets/ionic-core/css",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "./node_modules/ionicons/dist/ionicons",
+          "target": "./code/assets/ionic-core/ionicons",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "./node_modules/@ionic/pwa-elements/dist/ionicpwaelements",
+          "target": "./code/assets/ionic-core/pwa-elements",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "../pdm-web-components/dist/pdm-web-components",
+          "target": "./code/assets/pdm-web-components",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "../pdm-web-components/css/globalStyles.css",
+          "target": "./code/assets/skin.css",
+          "options": {
+            "overwrite": true
+          }
+        }
+      ]
+    }
+  ],
+  "postbuild": []
+}
